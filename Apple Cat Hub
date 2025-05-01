@@ -1,0 +1,208 @@
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+getgenv().Key = "0963972072074applecat"
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- GUI Setup
+local screenGui = Instance.new("ScreenGui", player.PlayerGui)
+screenGui.Name = "AppleCatHub"
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 600, 0, 400)
+mainFrame.Position = UDim2.new(0.5, -300, 0.5, -200)
+mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+mainFrame.Parent = screenGui
+
+-- Tabs Setup
+local tabBar = Instance.new("Frame")
+tabBar.Size = UDim2.new(1, 0, 0, 40)
+tabBar.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+tabBar.Position = UDim2.new(0, 0, 0, 0)
+tabBar.Parent = mainFrame
+
+local autoTab = Instance.new("TextButton")
+autoTab.Size = UDim2.new(0, 150, 1, 0)
+autoTab.Text = "Auto Features"
+autoTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+autoTab.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+autoTab.Parent = tabBar
+
+local seaEventTab = Instance.new("TextButton")
+seaEventTab.Size = UDim2.new(0, 150, 1, 0)
+seaEventTab.Text = "Sea Events"
+seaEventTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+seaEventTab.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+seaEventTab.Position = UDim2.new(0, 150, 0, 0)
+seaEventTab.Parent = tabBar
+
+local espTab = Instance.new("TextButton")
+espTab.Size = UDim2.new(0, 150, 1, 0)
+espTab.Text = "ESP"
+espTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+espTab.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+espTab.Position = UDim2.new(0, 300, 0, 0)
+espTab.Parent = tabBar
+
+local settingTab = Instance.new("TextButton")
+settingTab.Size = UDim2.new(0, 150, 1, 0)
+settingTab.Text = "Settings"
+settingTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+settingTab.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+settingTab.Position = UDim2.new(0, 450, 0, 0)
+settingTab.Parent = tabBar
+
+-- Frames Setup
+local autoFrame = Instance.new("Frame")
+autoFrame.Size = UDim2.new(1, 0, 1, -40)
+autoFrame.Position = UDim2.new(0, 0, 0, 40)
+autoFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+autoFrame.Visible = true
+autoFrame.Parent = mainFrame
+
+local seaEventFrame = Instance.new("Frame")
+seaEventFrame.Size = UDim2.new(1, 0, 1, -40)
+seaEventFrame.Position = UDim2.new(0, 0, 0, 40)
+seaEventFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+seaEventFrame.Visible = false
+seaEventFrame.Parent = mainFrame
+
+local espFrame = Instance.new("Frame")
+espFrame.Size = UDim2.new(1, 0, 1, -40)
+espFrame.Position = UDim2.new(0, 0, 0, 40)
+espFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+espFrame.Visible = false
+espFrame.Parent = mainFrame
+
+local settingFrame = Instance.new("Frame")
+settingFrame.Size = UDim2.new(1, 0, 1, -40)
+settingFrame.Position = UDim2.new(0, 0, 0, 40)
+settingFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+settingFrame.Visible = false
+settingFrame.Parent = mainFrame
+
+-- Auto Features Buttons
+local autoRaidButton = Instance.new("TextButton")
+autoRaidButton.Size = UDim2.new(1, -20, 0, 50)
+autoRaidButton.Position = UDim2.new(0, 10, 0, 10)
+autoRaidButton.Text = "Auto Raid"
+autoRaidButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+autoRaidButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+autoRaidButton.Parent = autoFrame
+
+local autoFruitButton = Instance.new("TextButton")
+autoFruitButton.Size = UDim2.new(1, -20, 0, 50)
+autoFruitButton.Position = UDim2.new(0, 10, 0, 70)
+autoFruitButton.Text = "Auto Fruit"
+autoFruitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+autoFruitButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+autoFruitButton.Parent = autoFrame
+
+-- Event Handling
+autoTab.MouseButton1Click:Connect(function()
+    autoFrame.Visible = true
+    seaEventFrame.Visible = false
+    espFrame.Visible = false
+    settingFrame.Visible = false
+end)
+
+seaEventTab.MouseButton1Click:Connect(function()
+    autoFrame.Visible = false
+    seaEventFrame.Visible = true
+    espFrame.Visible = false
+    settingFrame.Visible = false
+end)
+
+espTab.MouseButton1Click:Connect(function()
+    autoFrame.Visible = false
+    seaEventFrame.Visible = false
+    espFrame.Visible = true
+    settingFrame.Visible = false
+end)
+
+settingTab.MouseButton1Click:Connect(function()
+    autoFrame.Visible = false
+    seaEventFrame.Visible = false
+    espFrame.Visible = false
+    settingFrame.Visible = true
+end)
+
+-- Logic for Auto Features
+getgenv().AutoLevel = true
+spawn(function()
+    while getgenv().AutoLevel do
+        wait(1)
+        -- Add your level farming logic here
+    end
+end)
+
+getgenv().AutoBoss = true
+spawn(function()
+    while getgenv().AutoBoss do
+        wait(1)
+        -- Add your boss farming logic here
+    end
+end)
+
+getgenv().AutoRaid = true
+spawn(function()
+    while getgenv().AutoRaid do
+        wait(1)
+        -- Add your raid farming logic here
+    end
+end)
+
+getgenv().AutoFruit = true
+spawn(function()
+    while getgenv().AutoFruit do
+        wait(1)
+        -- Add your fruit farming logic here
+    end
+end)
+
+getgenv().AutoBone = true
+spawn(function()
+    while getgenv().AutoBone do
+        wait(1)
+        -- Add your bone farming logic here
+    end
+end)
+
+getgenv().AutoGolem = true
+spawn(function()
+    while getgenv().AutoGolem do
+        wait(1)
+        -- Add your golem farming logic here
+    end
+end)
+
+getgenv().AutoHaki = true
+spawn(function()
+    while getgenv().AutoHaki do
+        wait(1)
+        -- Add your haki farming logic here
+    end
+end)
+
+getgenv().AutoEliteHunter = true
+spawn(function()
+    while getgenv().AutoEliteHunter do
+        wait(1)
+        -- Add your elite hunter logic here
+    end
+end)
+
+getgenv().AutoSeaEvent = true
+spawn(function()
+    while getgenv().AutoSeaEvent do
+        wait(1)
+        -- Add your sea event logic here
+    end
+end)
+
+getgenv().FPSBoost = true
+spawn(function()
+    while getgenv().FPSBoost do
+        wait(1)
+        -- Add your FPS boost logic here
+    end
+end)
