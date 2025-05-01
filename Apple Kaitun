@@ -1,0 +1,89 @@
+repeat wait() until game:IsLoaded()
+repeat wait() until game.Players
+repeat wait() until game.Players.LocalPlayer
+repeat wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+
+-- Settings
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+getgenv().AutoLevel = true
+getgenv().AutoFruit = true
+getgenv().AutoBoss = true
+getgenv().AutoSeaEvent = true
+
+-- GUI Setup
+local screenGui = Instance.new("ScreenGui", player.PlayerGui)
+screenGui.Name = "AppleHub"
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 600, 0, 400)
+mainFrame.Position = UDim2.new(0.5, -300, 0.5, -200)
+mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+mainFrame.Parent = screenGui
+
+-- Auto Features Buttons
+local autoLevelButton = Instance.new("TextButton")
+autoLevelButton.Size = UDim2.new(0, 150, 0, 50)
+autoLevelButton.Position = UDim2.new(0, 10, 0, 10)
+autoLevelButton.Text = "Auto Level"
+autoLevelButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+autoLevelButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+autoLevelButton.Parent = mainFrame
+
+local autoFruitButton = Instance.new("TextButton")
+autoFruitButton.Size = UDim2.new(0, 150, 0, 50)
+autoFruitButton.Position = UDim2.new(0, 170, 0, 10)
+autoFruitButton.Text = "Auto Fruit"
+autoFruitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+autoFruitButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+autoFruitButton.Parent = mainFrame
+
+local autoBossButton = Instance.new("TextButton")
+autoBossButton.Size = UDim2.new(0, 150, 0, 50)
+autoBossButton.Position = UDim2.new(0, 10, 0, 70)
+autoBossButton.Text = "Auto Boss"
+autoBossButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+autoBossButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+autoBossButton.Parent = mainFrame
+
+-- Logic for Auto Features
+spawn(function()
+    while getgenv().AutoLevel do
+        wait(1)
+        -- Add Auto Level logic here
+    end
+end)
+
+spawn(function()
+    while getgenv().AutoFruit do
+        wait(1)
+        -- Add Auto Fruit logic here
+    end
+end)
+
+spawn(function()
+    while getgenv().AutoBoss do
+        wait(1)
+        -- Add Auto Boss logic here
+    end
+end)
+
+spawn(function()
+    while getgenv().AutoSeaEvent do
+        wait(1)
+        -- Add Auto Sea Event logic here
+    end
+end)
+
+-- Event handling for buttons
+autoLevelButton.MouseButton1Click:Connect(function()
+    getgenv().AutoLevel = not getgenv().AutoLevel
+end)
+
+autoFruitButton.MouseButton1Click:Connect(function()
+    getgenv().AutoFruit = not getgenv().AutoFruit
+end)
+
+autoBossButton.MouseButton1Click:Connect(function()
+    getgenv().AutoBoss = not getgenv().AutoBoss
+end)
